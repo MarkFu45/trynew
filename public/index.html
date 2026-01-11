@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>朋友圈五宫格 - AI恋爱助手</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Header -->
+        <header class="main-header">
+            <h1>朋友圈五宫格</h1>
+            <p>AI恋爱助手 - 通过朋友圈了解Ta的心</p>
+        </header>
+
+        <!-- Main Card -->
+        <main class="card">
+            <!-- Upload Section -->
+            <section id="upload-section" class="upload-section">
+                <div class="drop-zone" id="drop-zone">
+                    <div class="upload-icon-container">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 16V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 11L12 8L15 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h2>上传朋友圈截图</h2>
+                    <p class="sub-text">拖拽图片到这里，或点击选择文件</p>
+                    <p class="requirement-text">至少需要5张截图，支持JPG、PNG格式</p>
+                    <button class="btn-primary-gradient" id="select-files-btn">选择图片</button>
+                    <input type="file" id="file-input" multiple accept="image/jpeg, image/png" hidden>
+                </div>
+            </section>
+
+            <!-- Preview Section (Initially Hidden) -->
+            <section id="preview-section" class="preview-section" hidden>
+                <div class="preview-header">
+                    <h3>已选择图片 (<span id="file-count">0</span>张)</h3>
+                </div>
+                
+                <div class="image-grid" id="image-grid">
+                    <!-- Image items will be injected here -->
+                </div>
+
+                <div class="preview-actions">
+                    <button class="btn-secondary" id="add-more-btn">继续添加</button>
+                    <button class="btn-primary-solid" id="start-analyze-btn">开始分析</button>
+                </div>
+                
+                <div id="notes-container" style="margin-top: 20px;">
+                    <textarea id="user-notes" placeholder="（可选）输入你的额外备注，比如对方的职业、星座或你们的关系状态..."></textarea>
+                </div>
+            </section>
+
+            <!-- Loading State -->
+            <div id="loading" class="loading-overlay" hidden>
+                <div class="spinner"></div>
+                <p>AI正在深入分析...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="results-container" hidden>
+                <!-- Warning Banner -->
+                <div id="warning-banner" class="warning-banner" hidden></div>
+
+                <div class="result-card persona-card">
+                    <div id="persona-content"></div>
+                </div>
+                
+                <div class="result-card talks-card">
+                    <div id="talks-content"></div>
+                </div>
+                
+                <div class="result-card plan-card">
+                    <div id="plan-content"></div>
+                </div>
+                
+                <div class="result-card risks-card">
+                    <div id="risks-content"></div>
+                </div>
+
+                <button class="btn-secondary" onclick="location.reload()">重新分析</button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <p>❤️ 用AI读懂Ta的心，让爱情更有迹可循</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
